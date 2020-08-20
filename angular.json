@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "imageSearch"
+    }
+  },
+  "defaultProject": "imageSearch",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
