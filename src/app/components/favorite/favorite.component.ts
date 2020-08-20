@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/reducers';
+import { FavoriteList } from 'src/app/interfaces';
+import { createList, selectList } from 'src/app/actions/user.actions';
 
 @Component({
   selector: 'app-favorite',
@@ -8,15 +10,45 @@ import { State } from 'src/app/reducers';
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
-  listName: string;
-  data = [1,2,43,2134,213,4132,321,12,321,,22,1,1,11,1,1,,1,11,1];
+  selectedList: string;
+  listData: Array<FavoriteList>;
+  imagesData: Array<string>;
+  active: any;
   constructor(private store: Store<State>) {
-    store.select(appState => appState.user.selectedList).subscribe(listName => {
-      this.listName = listName;
+    store.select(appState => appState.user).subscribe(state => {
+      this.selectedList = state.selectedList;
+      this.listData = state.favoriteList;
+      console.log(this.listData);
     });
   }
 
   ngOnInit(): void {
+  }
+
+  selectActive(target) {
+    if(this.active){
+      this.active.className = "";
+    }
+    target.className = "active";
+    this.active = target;
+    if(this.listData.find(data => data.listName === target.innerText)){
+      this.store.dispatch(selectList({selectedList: target.innerText}));
+      this.imagesData = this.listData.find(data => data.listName === target.innerText).imageList;
+    }
+  }
+
+  createList(target, newListName) {
+    let newList = {
+      listName: newListName.value,
+      imageList: []
+    }
+    if(newListName.value === ''){
+      alert('Enter list Name!!');
+    } else if(this.listData.find(data => data.listName === newListName.value) === undefined){
+      this.store.dispatch(createList({ list:newList }));
+    } else {
+      alert('List already exists!');
+    }
   }
 
 }

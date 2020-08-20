@@ -3,10 +3,20 @@
       <div class="flip-card-front">
         <img src="{{imageData.urls.small}}" alt="Avatar">
       </div>
-      <div class="flip-card-back">
+      <div class="flip-card-back" >
           <p>By:</p>
-          <p>virendersingh gulair</p>
-          <button>Save to list</button>
+          <p class="name" (click)="goToLink(imageData.user.links.html)">{{imageData.user.first_name}} {{imageData.user.last_name}}</p>
+          <div class="selection" *ngIf="favoriteListNames.length">
+            <select #selection>
+              <option *ngFor="let list of favoriteListNames" value="{{list.listName}}">{{list.listName}}</option>
+            </select>
+            <button (click)="save(imageData.urls.regular, selection.value)">Save to list</button>
+          </div>
+          <div *ngIf="favoriteListNames.length === 0">
+            <input type="text" #listName>
+            <button (click)="createList(listName)">Create List</button>
+          </div>
+          <div></div>
       </div>
     </div>
   </div>

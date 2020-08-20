@@ -14,8 +14,8 @@ export interface State {
 export const initialState: State = {
   imageData: {},
   searchKeyword: '',
-  favoriteList: [{listName:'sample',imageList:[]}],
-  selectedList: 'sample'
+  favoriteList: [],
+  selectedList: ''
 };
 
 
@@ -24,11 +24,16 @@ export const reducer = createReducer(
   on(actions.loadImages, (state, imageData) => ({ ...state, imageData: imageData.payload })),
   on(actions.updateKeyword, (state, { searchKeyword }) => ({ ...state, searchKeyword: searchKeyword })),
   on(actions.createList, (state, { list }) => ({ ...state, favoriteList: [...state.favoriteList, list] })),
+  on(actions.selectList, (state, {selectedList}) => ({...state, selectedList})),
   on(actions.addFavorite, (state, { imageData }) => {
-    return { ...state, favoriteList: state.favoriteList.map(data => {
-      if(data.listName === imageData.listName) data.imageList.push(imageData.imageList[0]);
-      return data;
-    }) }
+    let index = state.favoriteList.map(data => data.listName).indexOf(imageData.listName);
+    return { ...state, favoriteList: [
+      ...state.favoriteList.slice(0, index),
+        Object.assign({}, state.favoriteList[index], {
+            imageList: [...state.favoriteList[index].imageList, imageData.imageList[0]]
+        }),
+        ...state.favoriteList.slice(index + 1)
+    ]}
   })
 );
 

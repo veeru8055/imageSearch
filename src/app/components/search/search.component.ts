@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
         this.store.dispatch(updateKeyword({searchKeyword: searchValue}));
         this.store.dispatch({ type: '[Image Page] Load Images' });
        }
-    }, 3000);
+    }, 2000);
   }
 
   ngOnInit(): void {

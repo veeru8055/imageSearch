@@ -1,15 +1,17 @@
 <div class="favorite-block">
     <div class="list">       
+    <h1>Favorite Lists</h1>
     <ul>
-        <li><a ng-class="active: {{listName}}">Home</a></li>
-        <li><a >News</a></li>
-        <li><a >Contact</a></li>
-        <li><a >About</a></li>
+        <li *ngFor="let list of listData" ><a (click)="selectActive($event.target)">{{list.listName}}</a></li>
+        <li>
+            <input type="text" #newListName>
+            <a (click)="createList($event.target, newListName)">Create List</a>
+        </li>
     </ul>
     </div>
     <div class="image-grid">
-        <div class="image-tile" *ngFor="let image of data">
-            <app-imagetile></app-imagetile>
+        <div class="image-tile" *ngFor="let image of imagesData">
+            <app-imagetile [imageData]="image"></app-imagetile>
         </div>
     </div>
 </div>
