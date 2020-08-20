@@ -1,1 +1,12 @@
-<p>search works!</p>
+<div class="search-block">
+    <div class="text-area">
+        <input type="text" [(ngModel)]="searchKeyword" (input)="onSearchChange($event.target.value)">
+        <p>Type atleast 3 char</p>
+    </div>
+    
+    <div class="image-grid" *ngIf="imagesData"  >
+        <div class="image-tile" *ngFor="let image of imagesData" >
+            <app-tile [imageData]="image"></app-tile>
+        </div>
+    </div>
+</div>

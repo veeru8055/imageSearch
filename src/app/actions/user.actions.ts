@@ -1,10 +1,7 @@
 import { createAction, props } from '@ngrx/store';
+import { FavoriteList } from '../interfaces';
 
-export const loadUsers = createAction(
-  '[User] Load Users'
-);
-
-export const switchSearch = createAction ('[User] Switch Search');
-export const switchFavorite = createAction ('[User] Switch Favorite');
-
-
+export const updateKeyword = createAction('Update Search Keyword', props<{searchKeyword: string}>());
+export const loadImages = createAction('[Images API] Images Loaded Success', props<any>());
+export const createList = createAction('Create new List', props<{list: FavoriteList}>());
+export const addFavorite = createAction('Add Favorite Image', props<{imageData: FavoriteList}>());

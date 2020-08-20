@@ -1,1 +1,15 @@
-<p>favorite works!</p>
+<div class="favorite-block">
+    <div class="list">       
+    <ul>
+        <li><a ng-class="active: {{listName}}">Home</a></li>
+        <li><a >News</a></li>
+        <li><a >Contact</a></li>
+        <li><a >About</a></li>
+    </ul>
+    </div>
+    <div class="image-grid">
+        <div class="image-tile" *ngFor="let image of data">
+            <app-imagetile></app-imagetile>
+        </div>
+    </div>
+</div>
