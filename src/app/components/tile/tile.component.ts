@@ -10,12 +10,12 @@ import { createList, addFavorite } from 'src/app/actions/user.actions';
   styleUrls: ['./tile.component.css']
 })
 export class TileComponent implements OnInit {
-  @Input() imageData: object;
+  @Input() imageData: ImageData;
 
   favoriteListNames: Array<FavoriteList>;
 
   constructor(private store: Store<State>) {
-    console.log(this.imageData);
+    console.log(this.imageData === undefined);
     store.select(appState => appState.user.favoriteList).subscribe(data => {
       this.favoriteListNames = data;
     });

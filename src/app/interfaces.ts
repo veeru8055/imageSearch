@@ -2,3 +2,22 @@ export interface FavoriteList {
     listName: string,
     imageList: Array<string>
 }
+interface Urls {
+    small: string;
+    regular: string;
+}
+
+interface User {
+    links: string;
+    first_name: string;
+    last_name: string;
+}
+
+interface Links {
+    html: string;
+}
+
+export interface ImageData {
+    urls: Urls;
+    user: User;
+}
