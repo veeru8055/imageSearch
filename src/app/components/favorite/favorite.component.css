@@ -12,6 +12,7 @@ ul {
     position: fixed;
     height: 100%;
     overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   }
   
   li a {
@@ -20,6 +21,7 @@ ul {
     color: white;
     padding: 8px 16px;
     text-decoration: none;
+    cursor: pointer;
   }
   
   li a.active {
@@ -42,6 +44,7 @@ ul {
     padding: 0;
     height: 40px;
     text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     overflow: auto;
 }
 
@@ -49,7 +52,7 @@ ul {
     width: 80%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
@@ -64,4 +67,12 @@ input {
     margin-top: 2%;
     margin-left: 10%;
     margin-left: 10%;
+}
+
+.create-list {
+  width: 80%;
+  margin-left: 5%;
+  margin-top: 10px;
+  background-color: rgb(59, 59, 59);
+  box-shadow: 0 0 8px 8px rgba(0,0,0,0.2);
 }

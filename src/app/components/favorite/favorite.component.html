@@ -4,8 +4,8 @@
     <ul>
         <li *ngFor="let list of listData" ><a (click)="selectActive($event.target)">{{list.listName}}</a></li>
         <li>
-            <input type="text" #newListName>
-            <a (click)="createList($event.target, newListName)">Create List</a>
+            <input type="text" placeholder="Enter List Name" #newListName>
+            <a class="create-list" (click)="createList($event.target, newListName)">Create List</a>
         </li>
     </ul>
     </div>

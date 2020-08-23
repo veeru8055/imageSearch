@@ -3,6 +3,7 @@ import { FavoriteList } from 'src/app/interfaces';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/reducers';
 import { createList, addFavorite } from 'src/app/actions/user.actions';
+import { ImageData } from '../../interfaces';
 
 @Component({
   selector: 'app-tile',
