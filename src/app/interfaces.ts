@@ -8,7 +8,7 @@ interface Urls {
 }
 
 interface User {
-    links: string;
+    links: Links;
     first_name: string;
     last_name: string;
 }
