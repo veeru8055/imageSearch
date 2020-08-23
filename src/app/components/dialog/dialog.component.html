@@ -1,0 +1,18 @@
+<div class="dialog-body" *ngIf="!favoriteList.length">
+    <h1>Favorite List</h1>
+    <mat-form-field class="text-area" appearance="legacy">
+        <mat-label>Create New List</mat-label>
+        <input matInput [(ngModel)]="listName" #listNameInput required>
+    </mat-form-field>
+    <button mat-raised-button (click)="createList(listNameInput.value)" >Create List and save</button>
+</div>
+<div class="dialog-body" *ngIf="favoriteList.length">
+    <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select #selection required>
+        <mat-option *ngFor="let image of favoriteList" value="{{image.listName}}">{{image.listName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button (click)="saveToList(selection.value)">Save to List</button>
+</div>

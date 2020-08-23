@@ -1,24 +1,7 @@
-<div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <img src="{{imageData.urls.small}}" alt="Avatar">
-      </div>
-      <div class="flip-card-back" >
-          <p>By:</p>
-          <p class="name" (click)="goToLink(imageData.user.links.html)">{{imageData.user.first_name}} {{imageData.user.last_name}}</p>
-          <div class="selection" *ngIf="favoriteListNames.length">
-            <select #selection>
-              <option *ngFor="let list of favoriteListNames" value="{{list.listName}}">{{list.listName}}</option>
-            </select>
-            <p></p>
-            <button (click)="save(imageData.urls.regular, selection.value)">Save to list</button>
-          </div>
-          <div *ngIf="favoriteListNames.length === 0">
-            <input type="text" #listName>
-            <p></p>
-            <button (click)="createList(listName)">Create List</button>
-          </div>
-          <div></div>
-      </div>
-    </div>
+<div class="container">
+  <img src="{{imageData.urls.small}}" alt="Avatar" class="image">
+  <div class="overlay" >
+    <p class="text" (click)="goToLink(imageData.user.links.html)">{{imageData.user.first_name}} {{imageData.user.last_name}}</p>
+    <p class="save-list" (click)="openDialog()">+ Save in Favourites</p>
   </div>
+</div>

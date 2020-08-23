@@ -1,17 +1,18 @@
 <div class="search-block">
-    <div class="text-area">
-        <input type="text" [(ngModel)]="searchKeyword" (input)="onSearchChange($event.target.value)">
-        <p>Type atleast 3 char</p>
-    </div>
-    
-    <div class="image-grid" *ngIf="imagesData"  >
+    <mat-form-field class="text-area" appearance="legacy">
+        <mat-label>Search image</mat-label>
+        <input matInput [(ngModel)]="searchKeyword" (input)="onSearchChange($event.target.value)">
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-hint *ngIf="searchKeyword.length < 3">Atleast 3 char required...</mat-hint>
+    </mat-form-field>
+    <mat-spinner class="loader" *ngIf="showLoader"></mat-spinner>
+    <div class="image-grid" *ngIf="imagesData">
         <div class="image-tile" *ngFor="let image of imagesData" >
             <app-tile [imageData]="image"></app-tile>
         </div>
         
         <div *ngIf="imagesData.length === 0">
-            No data found
+            No image found for current Search!
         </div>
     </div>
-
 </div>

@@ -39,6 +39,7 @@ ul {
 .list h1 {
   display: block;
     background-color: rgb(34, 91, 109);
+    font-size: 2vw;
     color: white;
     margin: 0;
     padding: 0;
@@ -71,6 +72,7 @@ input {
 
 .create-list {
   width: 80%;
+  font-size: 1.5vw;
   margin-left: 5%;
   margin-top: 10px;
   background-color: rgb(59, 59, 59);
