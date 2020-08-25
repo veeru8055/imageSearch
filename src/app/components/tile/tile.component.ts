@@ -27,32 +27,6 @@ export class TileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createList(newListName) {
-    let newList = {
-      listName: newListName.value,
-      imageList: []
-    }
-    if(newListName.value === ''){
-      alert('Enter list Name!!');
-    } else if(this.favoriteListNames.find(data => data.listName === newListName.value) === undefined){
-      this.store.dispatch(createList({ list:newList }));
-    } else {
-      alert('List already exists!');
-    }
-  }
-
-  save(imageUrl, selection){
-    if(this.favoriteListNames.find(data => data.listName === selection && data.imageList.find(img => img === imageUrl))){
-      alert('Image already in the Favourite List!');
-    } else {
-      this.store.dispatch(addFavorite({
-        imageData: {
-          listName: selection,
-          imageList: [imageUrl]
-        }
-      }));
-    }
-  }
   
   openDialog() {
     let dialogRef = this.dialog.open(DialogComponent, {

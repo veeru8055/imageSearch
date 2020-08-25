@@ -1,5 +1,6 @@
 export interface FavoriteList {
     listName: string,
+    description: string,
     imageList: Array<string>
 }
 interface Urls {

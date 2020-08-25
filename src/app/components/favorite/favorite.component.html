@@ -5,13 +5,29 @@
         <li *ngFor="let list of listData" ><a (click)="selectActive($event.target)">{{list.listName}}</a></li>
         <li>
             <input type="text" placeholder="Enter List Name" #newListName>
-            <a class="create-list" (click)="createList($event.target, newListName)">Create List</a>
+            <a class="create-list" (click)="createList(newListName)">Create List</a>
         </li>
     </ul>
     </div>
-    <div class="image-grid">
-        <div class="image-tile" *ngFor="let image of imagesData">
-            <app-imagetile [imageData]="image"></app-imagetile>
+    <div class="list-body" *ngIf="selectedListData">
+        <h1 *ngIf="!editMode">{{ selectedListData.listName }}</h1>
+        <p *ngIf="!editMode">{{ selectedListData.description }}</p>
+        <mat-form-field *ngIf="editMode">
+            <mat-label>Title</mat-label>
+            <input matInput [(ngModel)]="listName" required>
+        </mat-form-field>
+        <mat-form-field *ngIf="editMode">
+            <mat-label>Description</mat-label>
+            <textarea matInput [(ngModel)]="description" required></textarea>
+          </mat-form-field>
+        <div class="image-grid">
+            <div class="image-tile" *ngFor="let image of selectedListData.imageList">
+                <app-imagetile [imageData]="image"></app-imagetile>
+            </div>
         </div>
+    </div>
+    <div class="edit" *ngIf="selectedListData">
+        <button *ngIf="!editMode" (click)="edit()">Edit</button>
+        <button *ngIf="editMode" (click)="save(listName, description)">save</button>
     </div>
 </div>

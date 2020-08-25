@@ -34,6 +34,17 @@ export const reducer = createReducer(
         }),
         ...state.favoriteList.slice(index + 1)
     ]}
+  }),
+  on(actions.editList, (state, { oldListName, list }) => {
+    let index = state.favoriteList.map(data => data.listName).indexOf(oldListName);
+    return { ...state, favoriteList: [
+      ...state.favoriteList.slice(0, index),
+        Object.assign({}, state.favoriteList[index], {
+            listName: list.listName,
+            description: list.description
+        }),
+        ...state.favoriteList.slice(index + 1)
+    ]}
   })
 );
 

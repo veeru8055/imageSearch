@@ -32,6 +32,7 @@ export class DialogComponent implements OnInit {
       this.store.dispatch(createList({
         list: {
           listName,
+          description: 'Edit your description.',
           imageList: [this.imageUrl]
         }
       }));
@@ -47,6 +48,7 @@ export class DialogComponent implements OnInit {
         this.store.dispatch(addFavorite({
         imageData: {
             listName: selection,
+            description: 'Edit your description.',
             imageList: [this.imageUrl]
           }
         }));
