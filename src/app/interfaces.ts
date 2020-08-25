@@ -6,6 +6,7 @@ export interface FavoriteList {
 interface Urls {
     small: string;
     regular: string;
+    raw:string;
 }
 
 interface User {

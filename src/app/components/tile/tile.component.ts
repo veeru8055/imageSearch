@@ -32,7 +32,7 @@ export class TileComponent implements OnInit {
     let dialogRef = this.dialog.open(DialogComponent, {
       height: '300px',
       width: '300px',
-      data: { imageUrl: this.imageData.urls.regular }
+      data: { imageUrl: this.imageData.urls.raw }
     });
 
     dialogRef.afterClosed().subscribe(result => {
