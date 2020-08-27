@@ -71,7 +71,10 @@ export class FavoriteComponent implements OnInit {
           imageList: this.selectedListData.imageList
         }
       }));
-      this.selectedListData = undefined;
+      this.store.dispatch(selectList({selectedList: listName}));
+      this.selectedListData = this.listData.find(data => data.listName === listName);
+      this.listName = this.selectedListData.listName;
+      this.description = this.selectedListData.description;
       this.editMode = false;
     } else {
       alert('Invalid Title or Description');
